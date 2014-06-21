@@ -52,8 +52,8 @@ sub purge_page {
 
 sub vcl_recv {
 	if (req.method == "PURGE") {
-		if (std.ip !~ purge) {
-			error 405 "Not allowed.";
+		if (!client.ip ~ purge) {
+			return(synth(405,"Not allowed."));
 		}
 
 		if (req.http.X-Purge-Method) {
@@ -76,7 +76,7 @@ sub vcl_recv {
 			}
 		}
 
-		error 200 "Purged.";
+		return(synth(200,"Purged."));
 	}
 }
 
