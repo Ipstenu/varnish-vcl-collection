@@ -1,11 +1,10 @@
 ======================
-varnish-vcl-collection
+Collection of Varnish VCL files
 ======================
 
-Collection of Varnish VCL files.  The purpose of this collection is to make
-it easier to configure varnish for some common setups and behaviors.  Some
-of these files require you to define specific ACLs in your main VCL, and also
-note that the order of including files could change the behavior of Varnish.
+This collection is a fork of DreamHost's core files, updated to be used with Varnish 4.0
+
+The purpose of this collection is to make it easier to configure varnish for some common setups and behaviors.  Some of these files require you to define specific ACLs in your main VCL, and also note that the order of including files could change the behavior of Varnish.
 
 The main goal for this VCL Collection is to provide a simple config with just
 a few options that can make Varnish work for the majority of sites. Most of
@@ -17,9 +16,17 @@ to have customers benefit from the performance of a caching proxy without
 limiting what can run on the web backend and without customizing the
 configuration for each customer.
 
-See `wordpress-example.vcl` for an example of how to use this collection
-of VCLs to configure Varnish for a WordPress site.
+See `wordpress-example.vcl` for an example of how to use this collection of VCLs to configure Varnish for a WordPress site.
 
+
+PageSpeed
+=========
+
+In order to use PageSpeed with Varnish, you need to add the following to either your pagespeed.conf OR to your .htaccess files:
+
+    ModPagespeedModifyCachingHeaders off
+
+Please read this to understand what you're doing here: https://developers.google.com/speed/pagespeed/module/install#ModifyCachingHeaders
 
 CloudFlare
 ==========
