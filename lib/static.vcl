@@ -22,7 +22,7 @@ sub vcl_recv {
 		}
 		set req.url = regsub(req.url, "\?.*$", "");
 		unset req.http.Cookie;
-		return(lookup);
+		return(hash);
 	}
 }
 
