@@ -81,9 +81,9 @@ sub vcl_recv {
 }
 
 sub vcl_backend_response {
-	set beresp.http.X-Req-Host = req.http.host;
-	set beresp.http.X-Req-URL = req.url;
-	set beresp.http.X-Req-URL-Base = regsub(req.url, "\?.*$", "");
+	set beresp.http.X-Req-Host = bereq.http.host;
+	set beresp.http.X-Req-URL = bereq.url;
+	set beresp.http.X-Req-URL-Base = regsub(bereq.url, "\?.*$", "");
 }
 
 sub vcl_deliver {
